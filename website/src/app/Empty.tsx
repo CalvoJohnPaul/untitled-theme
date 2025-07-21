@@ -28,7 +28,7 @@ export function Empty(props: EmptyProps) {
 				<p className="flex justify-center gap-1 text-neutral-500 text-sm lg:text-base">
 					<span>No record matches your search. </span>
 					<a
-						href="https://github.com/calvo-jp/untitled-theme/issues/new"
+						href="https://github.com/JohnPaulCalvo/untitled-theme/issues/new"
 						className="flex items-center gap-1 font-medium text-indigo-600 underline underline-offset-2 dark:text-indigo-400"
 						target="_blank"
 						rel="noopener noreferrer"
