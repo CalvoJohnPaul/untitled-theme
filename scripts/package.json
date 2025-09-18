@@ -11,16 +11,16 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@biomejs/js-api": "^2.0.3",
-		"@biomejs/wasm-nodejs": "^2.1.2",
+		"@biomejs/js-api": "^3.0.0",
+		"@biomejs/wasm-nodejs": "^2.2.4",
 		"@clack/prompts": "^0.11.0",
 		"@tsconfig/node22": "^22.0.2",
 		"@types/yargs": "^17.0.33",
-		"shiki": "^3.7.0",
+		"shiki": "^3.12.2",
 		"svgo": "^4.0.0",
 		"svgson": "^5.3.1",
-		"tsx": "^4.20.3",
-		"typescript": "^5.8.3",
+		"tsx": "^4.20.5",
+		"typescript": "^5.9.2",
 		"vitest": "^3.2.4",
 		"yargs": "^18.0.0"
 	}
