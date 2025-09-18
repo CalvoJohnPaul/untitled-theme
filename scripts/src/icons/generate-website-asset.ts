@@ -1,11 +1,14 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {Biome} from '@biomejs/js-api/nodejs';
 import * as p from '@clack/prompts';
-import prettier, {type Options} from 'prettier';
 import {type CodeToHastOptions, codeToHtml} from 'shiki';
 import svgson from 'svgson';
 import {getWorkspaceRoot} from '../utils/get-workspace-root.js';
 import {getIcons} from './get-icons.js';
+
+const biome = new Biome();
+const {projectKey} = biome.openProject(getWorkspaceRoot());
 
 async function generateWebsiteAsset() {
 	p.intro('Generating database');
@@ -49,10 +52,6 @@ async function generateWebsiteAsset() {
 	spinner.stop();
 	p.outro('Database generated successfully!');
 }
-
-const PRETTIER_CONFIG: Options = {
-	singleQuote: true,
-};
 
 const SHIKI_CONFIG = {
 	lang: 'typescript',
@@ -116,15 +115,13 @@ async function toReactSnippet(svg: string, name: string) {
     export default ${name};
 	`;
 
+	const {content} = biome.formatContent(projectKey, component, {
+		filePath: 'Component.tsx',
+	});
+
 	return {
 		raw: component,
-		html: await codeToHtml(
-			await prettier.format(component, {
-				parser: 'typescript',
-				...PRETTIER_CONFIG,
-			}),
-			SHIKI_CONFIG,
-		),
+		html: await codeToHtml(content, SHIKI_CONFIG),
 	};
 }
 
@@ -171,15 +168,13 @@ async function toSolidSnippet(svg: string, name: string) {
 		}
   `;
 
+	const {content} = biome.formatContent(projectKey, component, {
+		filePath: 'Component.tsx',
+	});
+
 	return {
 		raw: component,
-		html: await codeToHtml(
-			await prettier.format(component, {
-				parser: 'typescript',
-				...PRETTIER_CONFIG,
-			}),
-			SHIKI_CONFIG,
-		),
+		html: await codeToHtml(content, SHIKI_CONFIG),
 	};
 }
 
@@ -227,15 +222,16 @@ async function toSvelteSnippet(svg: string) {
 		${svelteSvg}
 	`;
 
+	const {content} = biome.formatContent(projectKey, component, {
+		filePath: 'Component.svelte',
+	});
+
 	return {
 		raw: component,
-		html: await codeToHtml(
-			await prettier.format(component, {parser: 'html', ...PRETTIER_CONFIG}),
-			{
-				...SHIKI_CONFIG,
-				lang: 'svelte',
-			},
-		),
+		html: await codeToHtml(content, {
+			...SHIKI_CONFIG,
+			lang: 'svelte',
+		}),
 	};
 }
 
@@ -270,15 +266,16 @@ async function toHtmlSnippet(svg: string) {
 		},
 	});
 
+	const {content} = biome.formatContent(projectKey, component, {
+		filePath: 'Component.html',
+	});
+
 	return {
 		raw: component,
-		html: await codeToHtml(
-			await prettier.format(component, {parser: 'html', ...PRETTIER_CONFIG}),
-			{
-				...SHIKI_CONFIG,
-				lang: 'html',
-			},
-		),
+		html: await codeToHtml(content, {
+			...SHIKI_CONFIG,
+			lang: 'html',
+		}),
 	};
 }
 
