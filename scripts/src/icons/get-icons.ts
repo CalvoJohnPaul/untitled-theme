@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {optimize} from 'svgo';
 import svgson from 'svgson';
 import {getWorkspaceRoot} from '../utils/get-workspace-root.js';
-import {optimize} from 'svgo';
 
 interface Name {
 	formal: string;

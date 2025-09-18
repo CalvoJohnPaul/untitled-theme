@@ -1,7 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {Biome} from '@biomejs/js-api/nodejs';
 import {getWorkspaceRoot} from '../utils/get-workspace-root.js';
 import {getColors} from './get-colors.js';
+
+const biome = new Biome();
+const {projectKey} = biome.openProject(getWorkspaceRoot());
 
 async function generateWebsiteAsset() {
 	const content = await getContent();
@@ -10,7 +14,11 @@ async function generateWebsiteAsset() {
 		'website/src/app/assets/colors.json',
 	);
 
-	await fs.writeFile(destination, content, 'utf-8');
+		const formatResult = biome.formatContent(projectKey, content, {
+		filePath: 'colors.json',
+	});
+
+	await fs.writeFile(destination, formatResult.content, 'utf-8');
 }
 
 async function getContent() {
@@ -27,7 +35,7 @@ async function getContent() {
 		delete colors[k];
 	});
 
-	return JSON.stringify(colors);
+	return JSON.stringify(colors, null, 2);
 }
 
 generateWebsiteAsset();
