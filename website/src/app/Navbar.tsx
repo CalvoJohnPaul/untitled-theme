@@ -10,7 +10,7 @@ export function Navbar() {
 			<div className="grow"></div>
 			<div className="flex icon:size-5 items-center gap-3">
 				<a
-					href="https://github.com/JohnPaulCalvo/untitled-theme"
+					href="https://github.com/CalvoJohnPaul/untitled-theme"
 					target="_blank"
 					rel="noreferrer noopener"
 				>

@@ -14,11 +14,11 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/JohnPaulCalvo/untitled-theme.git",
+		"url": "git+https://github.com/CalvoJohnPaul/untitled-theme.git",
 		"directory": "packages/icons/svelte"
 	},
 	"bugs": {
-		"url": "https://github.com/JohnPaulCalvo/untitled-theme/issues"
+		"url": "https://github.com/CalvoJohnPaul/untitled-theme/issues"
 	},
 	"author": {
 		"name": "John Paul Calvo",
