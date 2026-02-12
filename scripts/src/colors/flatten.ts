@@ -60,7 +60,7 @@ export function unflatten(subject: {keys: string[]; value: any}[]) {
 
 		let current = result;
 
-		const lastKey = keys.pop()!;
+		const lastKey = keys.pop() as string;
 
 		for (const key of keys) {
 			if (!current[key]) {

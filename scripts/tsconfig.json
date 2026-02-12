@@ -1,7 +1,7 @@
 {
 	"extends": "@tsconfig/node22/tsconfig.json",
 	"compilerOptions": {
-		"types": ["vitest/globals"],
+		"types": ["node", "vitest/globals"],
 		"resolveJsonModule": true
 	},
 	"include": ["src", "tests", "vitest.setup.ts"]

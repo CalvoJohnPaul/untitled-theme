@@ -12,16 +12,17 @@
 	},
 	"dependencies": {
 		"@biomejs/js-api": "^4.0.0",
-		"@biomejs/wasm-nodejs": "^2.3.8",
-		"@clack/prompts": "^0.11.0",
+		"@biomejs/wasm-nodejs": "^2.3.14",
+		"@clack/prompts": "^1.0.0",
 		"@tsconfig/node22": "^22.0.5",
+		"@types/node": "^25.2.3",
 		"@types/yargs": "^17.0.35",
-		"shiki": "^3.19.0",
+		"shiki": "^3.22.0",
 		"svgo": "^4.0.0",
 		"svgson": "^5.3.1",
 		"tsx": "^4.21.0",
 		"typescript": "^5.9.3",
-		"vitest": "^4.0.15",
+		"vitest": "^4.0.18",
 		"yargs": "^18.0.0"
 	}
 }

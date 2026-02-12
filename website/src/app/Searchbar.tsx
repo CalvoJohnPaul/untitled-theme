@@ -38,7 +38,7 @@ export function Searchbar(props: SearchbarProps) {
 
 	return (
 		<div {...props} className={twMerge(props.className, 'relative')}>
-			<SearchLgIcon className="-translate-y-1/2 pointer-events-none absolute top-1/2 left-4 text-neutral-300 dark:text-neutral-400" />
+			<SearchLgIcon className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-neutral-300 dark:text-neutral-400" />
 
 			<input
 				value={internalValue}
@@ -53,7 +53,7 @@ export function Searchbar(props: SearchbarProps) {
 			{value.length > 0 && (
 				<button
 					type="button"
-					className="-translate-y-1/2 absolute top-1/2 right-4"
+					className="absolute top-1/2 right-4 -translate-y-1/2"
 					tabIndex={-1}
 					onClick={() => {
 						setValue('');

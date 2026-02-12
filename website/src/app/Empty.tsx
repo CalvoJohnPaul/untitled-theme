@@ -17,9 +17,9 @@ export function Empty(props: EmptyProps) {
 			className={twMerge(props.className, 'py-12 lg:py-16')}
 		>
 			<div className="pr-4 lg:pr-8">
-				<div className="relative mx-auto size-[8rem] rounded-full bg-neutral-100 lg:size-[12rem] dark:bg-neutral-800">
-					<div className="-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 size-[6.5rem] rounded-full bg-white lg:size-[10rem] dark:bg-neutral-900" />
-					<div className="-rotate-45 absolute right-0 bottom-0 h-8 w-3 rounded-full bg-neutral-100 lg:h-12 lg:w-4 dark:bg-neutral-800" />
+				<div className="relative mx-auto size-32 rounded-full bg-neutral-100 lg:size-48 dark:bg-neutral-800">
+					<div className="absolute top-1/2 left-1/2 size-26 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white lg:size-40 dark:bg-neutral-900" />
+					<div className="absolute right-0 bottom-0 h-8 w-3 -rotate-45 rounded-full bg-neutral-100 lg:h-12 lg:w-4 dark:bg-neutral-800" />
 				</div>
 			</div>
 

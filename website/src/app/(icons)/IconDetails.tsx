@@ -1,4 +1,6 @@
-import {Clipboard, Dialog, Tabs} from '@ark-ui/react';
+import {Clipboard} from '@ark-ui/react/clipboard';
+import {Dialog} from '@ark-ui/react/dialog';
+import {Tabs} from '@ark-ui/react/tabs';
 import {CheckIcon, Copy01Icon, XCloseIcon} from '@untitled-theme/icons-react';
 import {twMerge} from 'tailwind-merge';
 import {useIconsGalleryContext} from './IconsGalleryContext';
@@ -47,7 +49,7 @@ export function IconDetails() {
 					</Dialog.CloseTrigger>
 
 					{!!iconsGallery.icon && (
-						<div className="w-full max-w-full lg:w-[40rem] lg:max-w-[40rem] [&_.shiki]:max-h-[50vh]">
+						<div className="w-full max-w-full lg:w-160 lg:max-w-160 [&_.shiki]:max-h-[50vh]">
 							<div>
 								<div
 									className="w-fit rounded border border-neutral-300 p-3 dark:border-neutral-800"
@@ -118,14 +120,14 @@ export function IconDetails() {
 													'[&_.shiki]:border-neutral-300',
 													'[&_.shiki]:dark:border-neutral-800',
 													'[&_.shiki]:font-mono',
-													'[&_.shiki]:bg-[var(--shiki-light-bg)]',
-													'[&_.shiki]:text-[var(--shiki-light)]',
-													'[&_.shiki]:dark:bg-[var(--shiki-dark-bg)]',
-													'[&_.shiki]:dark:text-[var(--shiki-dark)]',
-													'[&_.shiki_span]:bg-[var(--shiki-light-bg)]',
-													'[&_.shiki_span]:text-[var(--shiki-light)]',
-													'[&_.shiki_span]:dark:bg-[var(--shiki-dark-bg)]',
-													'[&_.shiki_span]:dark:text-[var(--shiki-dark)]',
+													'[&_.shiki]:bg-(--shiki-light-bg)',
+													'[&_.shiki]:text-(--shiki-light)',
+													'[&_.shiki]:dark:bg-(--shiki-dark-bg)',
+													'[&_.shiki]:dark:text-(--shiki-dark)',
+													'[&_.shiki_span]:bg-(--shiki-light-bg)',
+													'[&_.shiki_span]:text-(--shiki-light)',
+													'[&_.shiki_span]:dark:bg-(--shiki-dark-bg)',
+													'[&_.shiki_span]:dark:text-(--shiki-dark)',
 												)}
 												dangerouslySetInnerHTML={{
 													__html: tab.content?.html ?? '',

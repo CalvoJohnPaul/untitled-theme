@@ -1,6 +1,6 @@
 'use client';
 
-import {Menu} from '@ark-ui/react';
+import {Menu} from '@ark-ui/react/menu';
 import {ChevronDownIcon} from '@untitled-theme/icons-react';
 import {usePathname, useRouter} from 'next/navigation';
 

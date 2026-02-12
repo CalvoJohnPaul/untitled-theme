@@ -1,9 +1,9 @@
 import type {Metadata} from 'next';
+import {ThemeProvider} from 'next-themes';
 import {Fira_Code, Inter, Rammetto_One} from 'next/font/google';
 import {twMerge} from 'tailwind-merge';
 import './globals.css';
 import {Navbar} from './Navbar';
-import {Providers} from './Providers';
 
 const body = Inter({
 	weight: ['400', '500', '600', '700'],
@@ -56,12 +56,18 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			suppressHydrationWarning
 		>
 			<body className="min-h-dvh bg-white font-sans text-neutral-700 dark:bg-neutral-900 dark:text-neutral-400">
-				<Providers>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem={false}
+					enableColorScheme={false}
+					disableTransitionOnChange
+				>
 					<Navbar />
-					<main className="mx-auto max-w-screen-lg p-4 md:p-8 lg:p-12">
+					<main className="mx-auto max-w-5xl p-4 md:p-8 lg:p-12">
 						{children}
 					</main>
-				</Providers>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

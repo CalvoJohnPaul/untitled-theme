@@ -1,6 +1,6 @@
 'use client';
 
-import {Clipboard} from '@ark-ui/react';
+import {Clipboard} from '@ark-ui/react/clipboard';
 import {CheckIcon, Copy01Icon} from '@untitled-theme/icons-react';
 import {useSearchParams} from 'next/navigation';
 import type {CSSProperties} from 'react';
@@ -71,7 +71,7 @@ export function ColorsGallery(props: ColorsGalleryProps) {
 							{pairs.map(([k, v], idx_1) => (
 								<div key={idx_1}>
 									<div
-										className="aspect-square bg-[var(--bg)]"
+										className="aspect-square bg-(--bg)"
 										style={{
 											['--bg' as string]: v,
 										}}

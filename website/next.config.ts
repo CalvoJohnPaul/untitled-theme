@@ -1,11 +1,10 @@
 import type {NextConfig} from 'next';
 
-const nextConfig: NextConfig = {
+export default {
 	output: 'export',
 	images: {
 		formats: ['image/avif', 'image/webp'],
 		minimumCacheTTL: 31536000,
 	},
-};
-
-export default nextConfig;
+	reactCompiler: true,
+} satisfies NextConfig;

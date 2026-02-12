@@ -14,7 +14,7 @@ async function generateWebsiteAsset() {
 		'website/src/app/assets/colors.json',
 	);
 
-		const formatResult = biome.formatContent(projectKey, content, {
+	const formatResult = biome.formatContent(projectKey, content, {
 		filePath: 'colors.json',
 	});
 

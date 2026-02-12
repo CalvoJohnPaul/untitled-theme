@@ -1,6 +1,6 @@
 'use client';
 
-import {createListCollection, Select} from '@ark-ui/react';
+import {createListCollection, Select} from '@ark-ui/react/select';
 import {
 	CheckIcon,
 	CloudMoonIcon,
@@ -70,7 +70,7 @@ export function ThemePicker() {
 								<span>{item.label}</span>
 							</Select.ItemText>
 							<Select.ItemIndicator asChild>
-								<CheckIcon className="!size-4 shrink-0 text-emerald-500 dark:text-emerald-400" />
+								<CheckIcon className="size-4! shrink-0 text-emerald-500 dark:text-emerald-400" />
 							</Select.ItemIndicator>
 						</Select.Item>
 					))}
