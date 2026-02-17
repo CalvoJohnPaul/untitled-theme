@@ -33,12 +33,11 @@ export function IconDetails() {
 
 	return (
 		<Dialog.Root
-			open={!!iconsGallery.icon}
-			onOpenChange={(details) => {
-				if (!details.open) {
-					iconsGallery.setIcon(null);
-				}
+			open={iconsGallery.icon != null}
+			onOpenChange={() => {
+				iconsGallery.setIcon(null);
 			}}
+			lazyMount
 		>
 			<Dialog.Backdrop className="fixed inset-0 z-overlay ui-closed:animate-fade-out ui-open:animate-fade-in bg-neutral-900/50 backdrop-blur-sm dark:bg-neutral-900/50" />
 

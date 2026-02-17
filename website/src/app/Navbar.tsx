@@ -1,3 +1,4 @@
+import {ClientOnly} from '@ark-ui/react';
 import type {ComponentPropsWithRef} from 'react';
 import {NavbarLogo} from './NavbarLogo';
 import {ThemePicker} from './ThemePicker';
@@ -17,7 +18,9 @@ export function Navbar() {
 					<span className="sr-only">Repository</span>
 					<GithubIcon />
 				</a>
-				<ThemePicker />
+				<ClientOnly>
+					<ThemePicker />
+				</ClientOnly>
 			</div>
 		</header>
 	);

@@ -32,6 +32,7 @@ export function NavbarLogo() {
 				onSelect={(detail) => {
 					router.push(detail.value);
 				}}
+				lazyMount
 			>
 				<Menu.Trigger className="flex cursor-pointer items-center gap-0.5 rounded bg-neutral-100 px-1.5 py-1 text-neutral-600 text-sm leading-none tracking-tight dark:bg-neutral-800/30 dark:text-neutral-400">
 					{pathname.startsWith('/colors') ? 'colors' : 'icons'}

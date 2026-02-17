@@ -46,6 +46,7 @@ export function ThemePicker() {
 				const value = details.value.at(0);
 				if (value) setTheme(value);
 			}}
+			lazyMount
 		>
 			<Select.Control>
 				<Select.Trigger className="flex aspect-square icon:size-5 cursor-pointer items-center gap-2 rounded-md px-2 py-1">

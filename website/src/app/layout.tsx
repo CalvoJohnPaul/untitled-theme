@@ -35,6 +35,8 @@ const mono = Fira_Code({
 	adjustFontFallback: true,
 });
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
 	title: {
 		default: 'Untitled Theme',

@@ -6,6 +6,8 @@ import {ColorsGallery} from './ColorsGallery';
 import {ColorsGallerySkeleton} from './ColorsGallerySkeleton';
 import {getColors} from './utils';
 
+export const dynamic = 'force-static';
+
 export const metadata: Metadata = {
 	title: 'Colors',
 	openGraph: {
