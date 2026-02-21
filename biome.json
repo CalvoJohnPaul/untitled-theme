@@ -43,6 +43,14 @@
 			}
 		}
 	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
+		}
+	},
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single",
@@ -53,14 +61,6 @@
 	"css": {
 		"parser": {
 			"tailwindDirectives": true
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "on"
-			}
 		}
 	}
 }
