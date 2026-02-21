@@ -1,10 +1,9 @@
 import {LinkExternal02Icon} from '@untitled-theme/icons-react';
-import type {CSSProperties} from 'react';
-import {twMerge} from 'tailwind-merge';
+import clsx from 'clsx';
 
 export interface EmptyProps {
-	id?: string;
-	style?: CSSProperties;
+	title?: string;
+	description?: string;
 	className?: string;
 }
 
@@ -13,8 +12,7 @@ export function Empty(props: EmptyProps) {
 		<div
 			role="alert"
 			aria-live="polite"
-			{...props}
-			className={twMerge(props.className, 'py-12 lg:py-16')}
+			className={clsx(props.className, 'py-12 lg:py-16')}
 		>
 			<div className="pr-4 lg:pr-8">
 				<div className="relative mx-auto size-32 rounded-full bg-neutral-100 lg:size-48 dark:bg-neutral-800">
@@ -24,9 +22,11 @@ export function Empty(props: EmptyProps) {
 			</div>
 
 			<div className="mt-10 lg:mt-12">
-				<h3 className="text-center font-bold lg:text-lg">No records found</h3>
+				<h3 className="text-center font-bold lg:text-lg">
+					{props.title ?? 'No records found'}
+				</h3>
 				<p className="flex justify-center gap-1 text-neutral-500 text-sm lg:text-base">
-					<span>No record matches your search. </span>
+					<span>{props.description ?? 'No record matches your search.'}</span>
 					<a
 						href="https://github.com/CalvoJohnPaul/untitled-theme/issues/new"
 						className="flex items-center gap-1 font-medium text-indigo-600 underline underline-offset-2 dark:text-indigo-400"

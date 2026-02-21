@@ -1,3 +1,8 @@
+export interface ColorPalette {
+	parent: string[];
+	children: Record<string, string>;
+}
+
 export interface IconSnippetEntry {
 	raw: string;
 	html: string;

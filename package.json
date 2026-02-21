@@ -2,7 +2,7 @@
 	"name": "@untitled-theme/root",
 	"type": "module",
 	"private": true,
-	"packageManager": "pnpm@10.30.0",
+	"packageManager": "pnpm@10.30.1",
 	"scripts": {
 		"website": "pnpm --filter=@untitled-theme/website",
 		"scripts": "pnpm --filter=@untitled-theme/scripts",
@@ -15,7 +15,7 @@
 		"format": "biome format --write"
 	},
 	"dependencies": {
-		"@biomejs/biome": "2.4.2",
+		"@biomejs/biome": "2.4.4",
 		"typescript": "^5.9.3"
 	}
 }

@@ -1,7 +1,7 @@
+import clsx from 'clsx';
 import type {Metadata} from 'next';
 import {ThemeProvider} from 'next-themes';
 import {Fira_Code, Inter, Rammetto_One} from 'next/font/google';
-import {twMerge} from 'tailwind-merge';
 import './globals.css';
 import {Navbar} from './Navbar';
 
@@ -35,8 +35,6 @@ const mono = Fira_Code({
 	adjustFontFallback: true,
 });
 
-export const dynamic = 'force-static';
-
 export const metadata: Metadata = {
 	title: {
 		default: 'Untitled Theme',
@@ -49,7 +47,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html
 			lang="en"
-			className={twMerge(
+			className={clsx(
 				body.variable,
 				heading.variable,
 				mono.variable,

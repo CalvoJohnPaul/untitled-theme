@@ -1,7 +1,7 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
 import {Biome} from '@biomejs/js-api/nodejs';
 import * as p from '@clack/prompts';
+import fs from 'node:fs/promises';
+import path from 'node:path';
 import {type CodeToHastOptions, codeToHtml} from 'shiki';
 import svgson from 'svgson';
 import {getWorkspaceRoot} from '../utils/get-workspace-root.js';
@@ -43,7 +43,7 @@ async function generateWebsiteAsset() {
 
 	const outputFile = path.join(
 		getWorkspaceRoot(),
-		'website/src/app/assets/icons.json',
+		'website/src/content/icons.json',
 	);
 
 	spinner.message("Generating 'database.json'");

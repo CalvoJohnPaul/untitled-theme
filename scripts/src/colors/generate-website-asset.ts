@@ -1,6 +1,6 @@
+import {Biome} from '@biomejs/js-api/nodejs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {Biome} from '@biomejs/js-api/nodejs';
 import {getWorkspaceRoot} from '../utils/get-workspace-root.js';
 import {getColors} from './get-colors.js';
 
@@ -11,7 +11,7 @@ async function generateWebsiteAsset() {
 	const content = await getContent();
 	const destination = path.join(
 		getWorkspaceRoot(),
-		'website/src/app/assets/colors.json',
+		'website/src/content/colors.json',
 	);
 
 	const formatResult = biome.formatContent(projectKey, content, {

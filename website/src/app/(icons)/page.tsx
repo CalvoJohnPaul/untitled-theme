@@ -1,10 +1,7 @@
-import icons from '@/app/assets/icons.json';
+import {getIcons} from '@/utils/getIcons';
 import type {Metadata} from 'next';
-import {Searchbar} from '../Searchbar';
-import {IconsGallery} from './IconsGallery';
-import type {Icon} from './types';
-
-export const dynamic = 'force-static';
+import {Suspense} from 'react';
+import {Items} from './Items';
 
 export const metadata: Metadata = {
 	title: 'Icons',
@@ -16,10 +13,11 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
+	const icons = await getIcons();
+
 	return (
-		<>
-			<Searchbar className="mb-5 lg:mb-8" />
-			<IconsGallery icons={icons as unknown as Icon[]} />
-		</>
+		<Suspense>
+			<Items data={icons} />
+		</Suspense>
 	);
 }

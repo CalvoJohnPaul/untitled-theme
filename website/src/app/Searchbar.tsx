@@ -1,53 +1,35 @@
 'use client';
 
+import {useControllableState} from '@radix-ui/react-use-controllable-state';
 import {SearchLgIcon, XCloseIcon} from '@untitled-theme/icons-react';
-import {usePathname, useRouter, useSearchParams} from 'next/navigation';
-import {type CSSProperties, useState} from 'react';
-import {twMerge} from 'tailwind-merge';
-import {useDebounceCallback} from 'usehooks-ts';
+import clsx from 'clsx';
 
 export interface SearchbarProps {
-	id?: string;
-	style?: CSSProperties;
+	value?: string;
+	defaultValue?: string;
+	onChange?: (value: string) => void;
 	className?: string;
 }
 
 export function Searchbar(props: SearchbarProps) {
-	const router = useRouter();
-	const pathname = usePathname();
-	const searchParams = useSearchParams();
-
-	const value = searchParams.get('search') ?? '';
-
-	const setValue = useDebounceCallback(async (newValue: string) => {
-		const newSearchParams = new URLSearchParams(searchParams);
-
-		if (newValue.trim().length < 1) {
-			newSearchParams.delete('search');
-		} else {
-			newSearchParams.set('search', newValue);
-		}
-
-		const queryString = newSearchParams.toString();
-		const newPath = queryString ? `${pathname}?${queryString}` : pathname;
-
-		router.push(newPath, {scroll: false});
-	}, 250);
-
-	const [internalValue, setInternalValue] = useState(value);
+	const [value, setValue] = useControllableState({
+		prop: props.value,
+		defaultProp: props.defaultValue ?? '',
+		onChange: props.onChange,
+	});
 
 	return (
-		<div {...props} className={twMerge(props.className, 'relative')}>
+		<div className={clsx(props.className, 'relative')}>
 			<SearchLgIcon className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-neutral-300 dark:text-neutral-400" />
 
 			<input
-				value={internalValue}
+				type="search"
+				value={value}
 				onChange={(e) => {
 					setValue(e.target.value);
-					setInternalValue(e.target.value);
 				}}
 				placeholder="Search"
-				className="h-12 w-full rounded border border-neutral-300 bg-transparent px-12 py-2 outline-none dark:border-neutral-800"
+				className="h-12 w-full appearance-none rounded border border-neutral-300 bg-transparent px-12 py-2 outline-none dark:border-neutral-800"
 			/>
 
 			{value.length > 0 && (
@@ -57,7 +39,6 @@ export function Searchbar(props: SearchbarProps) {
 					tabIndex={-1}
 					onClick={() => {
 						setValue('');
-						setInternalValue('');
 					}}
 				>
 					<XCloseIcon className="size-4" />
