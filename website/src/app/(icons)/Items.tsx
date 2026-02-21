@@ -23,8 +23,8 @@ export function Items({data}: {data: Icon[]}) {
 			<div>
 				<p className="mb-3 text-sm">{icons.length} icons found</p>
 				<div className="grid grid-cols-6 gap-2 md:grid-cols-8 lg:grid-cols-10 xl:grid-cols-12">
-					{icons.map((icon) => (
-						<ItemProvider key={icon.name} value={icon}>
+					{icons.map((icon, idx) => (
+						<ItemProvider key={idx} value={icon}>
 							<Item />
 						</ItemProvider>
 					))}
