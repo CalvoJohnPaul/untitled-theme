@@ -11,8 +11,10 @@ export async function getIcons(options?: PaginatedOptions) {
 	const offset = clamp(options?.offset ?? 0, 0, array.length);
 	const limit = clamp(options?.limit ?? array.length, 1, array.length);
 
-	cacheLife(`weeks`);
 	cacheTag(`icons__${offset}:${limit}`);
+	cacheLife({
+		revalidate: 60 * 60 * 24 * 30,
+	});
 
 	return array.slice(offset, offset + limit);
 }

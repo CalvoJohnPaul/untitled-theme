@@ -15,9 +15,10 @@ export function Items(props: {data: ColorPalette[]}) {
 	useEffect(() => {
 		const controller = new AbortController();
 
-		fetch(`/api/colors?offset=${data.length}`, {
+		fetch(`/api/colors?offset=${props.data.length}`, {
 			cache: 'force-cache',
 			signal: controller.signal,
+			next: {revalidate: 60 * 60 * 24 * 30},
 		})
 			.then((res) => res.json())
 			.then((next) => setData((prev) => [...prev, ...next]))
@@ -26,7 +27,7 @@ export function Items(props: {data: ColorPalette[]}) {
 		return () => {
 			controller.abort();
 		};
-	}, [data.length]);
+	}, [props.data.length]);
 
 	const result = data.filter((c) => {
 		return c.parent

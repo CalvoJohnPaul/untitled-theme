@@ -16,9 +16,10 @@ export function Items(props: {data: Icon[]}) {
 	useEffect(() => {
 		const controller = new AbortController();
 
-		fetch(`/api/icons?offset=${data.length}`, {
+		fetch(`/api/icons?offset=${props.data.length}`, {
 			cache: 'force-cache',
 			signal: controller.signal,
+			next: {revalidate: 60 * 60 * 24 * 30},
 		})
 			.then((res) => res.json())
 			.then((next) => setData((prev) => [...prev, ...next]))
@@ -27,7 +28,7 @@ export function Items(props: {data: Icon[]}) {
 		return () => {
 			controller.abort();
 		};
-	}, [data.length]);
+	}, [props.data.length]);
 
 	const result = data.filter((icon) => {
 		return icon.name
