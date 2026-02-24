@@ -1,3 +1,4 @@
+import {Analytics} from '@vercel/analytics/next';
 import clsx from 'clsx';
 import type {Metadata} from 'next';
 import {Fira_Code, Inter, Rammetto_One} from 'next/font/google';
@@ -66,6 +67,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 						{children}
 					</main>
 				</Providers>
+				<Analytics />
 			</body>
 		</html>
 	);
