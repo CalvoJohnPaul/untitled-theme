@@ -1,9 +1,5 @@
-export function searchParamsToObject(subject: URLSearchParams) {
-	const result: Record<string, string> = {};
-
-	for (const [key, value] of subject.entries()) {
-		result[key] = value;
-	}
-
-	return result;
-}
+export const searchParamsToObject = (subject: URLSearchParams) =>
+	subject.entries().reduce<Record<string, string>>((o, [k, value]) => {
+		o[k] = value;
+		return o;
+	}, {});
