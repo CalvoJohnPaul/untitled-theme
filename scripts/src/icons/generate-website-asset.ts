@@ -43,7 +43,7 @@ async function generateWebsiteAsset() {
 
 	const outputFile = path.join(
 		getWorkspaceRoot(),
-		'website/src/content/icons.json',
+		'website/src/assets/icons.json',
 	);
 
 	spinner.message("Generating 'database.json'");

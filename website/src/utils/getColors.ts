@@ -1,14 +1,23 @@
-import colors from '@/content/colors.json';
+import colors from '@/assets/colors.json';
+import type {PaginatedOptions} from '@/definitions';
 import type {ColorPalette} from '@/types';
-import {isPlainObject} from 'es-toolkit';
+import {clamp, isPlainObject} from 'es-toolkit';
 import {cacheLife, cacheTag} from 'next/cache';
 
-export async function getColors(): Promise<ColorPalette[]> {
+export async function getColors(options?: PaginatedOptions) {
 	'use cache';
 
-	cacheLife('weeks');
-	cacheTag('colors');
+	const array = _getColors();
+	const offset = clamp(options?.offset ?? 0, 0, array.length);
+	const limit = clamp(options?.limit ?? array.length, 1, array.length);
 
+	cacheLife(`weeks`);
+	cacheTag(`colors__${offset}:${limit}`);
+
+	return array.slice(offset, offset + limit);
+}
+
+function _getColors() {
 	const l: ColorPalette[] = [];
 
 	function fn(o: Record<string, any>, p: string[] = []) {

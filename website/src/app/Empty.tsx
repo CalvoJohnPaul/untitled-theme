@@ -1,13 +1,11 @@
 import {LinkExternal02Icon} from '@untitled-theme/icons-react';
 import clsx from 'clsx';
 
-export interface EmptyProps {
+export function Empty(props: {
 	title?: string;
 	description?: string;
 	className?: string;
-}
-
-export function Empty(props: EmptyProps) {
+}) {
 	return (
 		<div
 			role="alert"

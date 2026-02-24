@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import type {Metadata} from 'next';
-import {ThemeProvider} from 'next-themes';
 import {Fira_Code, Inter, Rammetto_One} from 'next/font/google';
 import './globals.css';
 import {Navbar} from './Navbar';
+import {Providers} from './Providers';
+import {Searchbar} from './Searchbar';
 
 const body = Inter({
 	weight: ['400', '500', '600', '700'],
@@ -52,22 +53,19 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 				heading.variable,
 				mono.variable,
 				'scroll-smooth',
+				'scheme-light',
+				'dark:scheme-dark',
 			)}
 			suppressHydrationWarning
 		>
 			<body className="min-h-dvh bg-white font-sans text-neutral-700 dark:bg-neutral-900 dark:text-neutral-400">
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem={false}
-					enableColorScheme={false}
-					disableTransitionOnChange
-				>
+				<Providers>
 					<Navbar />
 					<main className="mx-auto max-w-5xl p-4 md:p-8 lg:p-12">
+						<Searchbar />
 						{children}
 					</main>
-				</ThemeProvider>
+				</Providers>
 			</body>
 		</html>
 	);

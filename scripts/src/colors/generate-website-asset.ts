@@ -11,7 +11,7 @@ async function generateWebsiteAsset() {
 	const content = await getContent();
 	const destination = path.join(
 		getWorkspaceRoot(),
-		'website/src/content/colors.json',
+		'website/src/assets/colors.json',
 	);
 
 	const formatResult = biome.formatContent(projectKey, content, {

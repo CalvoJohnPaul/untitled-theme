@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const colors = await getColors();
+	const colors = await getColors({limit: 12});
 
 	return (
 		<Suspense>
