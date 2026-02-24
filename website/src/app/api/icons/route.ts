@@ -6,5 +6,10 @@ import {type NextRequest, NextResponse} from 'next/server';
 export async function GET(request: NextRequest) {
 	const search = searchParamsToObject(request.nextUrl.searchParams);
 	const icons = await getIcons(PaginatedOptionsDefinition.parse(search));
-	return NextResponse.json(icons);
+	return NextResponse.json(icons, {
+		headers: {
+			'Cache-Control':
+				'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
+		},
+	});
 }

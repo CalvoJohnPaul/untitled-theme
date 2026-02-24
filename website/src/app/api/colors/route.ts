@@ -6,5 +6,10 @@ import {type NextRequest, NextResponse} from 'next/server';
 export async function GET(request: NextRequest) {
 	const search = searchParamsToObject(request.nextUrl.searchParams);
 	const colors = await getColors(PaginatedOptionsDefinition.parse(search));
-	return NextResponse.json(colors);
+	return NextResponse.json(colors, {
+		headers: {
+			'Cache-Control':
+				'public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400',
+		},
+	});
 }
