@@ -30,6 +30,12 @@ export function Items(props: {data: Icon[]}) {
 		};
 	}, [props.data.length]);
 
+	useEffect(() => {
+		return () => {
+			setData(props.data);
+		};
+	}, [props.data]);
+
 	const result = data.filter((icon) => {
 		return icon.name
 			.toLowerCase()

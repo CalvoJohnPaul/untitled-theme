@@ -29,6 +29,12 @@ export function Items(props: {data: ColorPalette[]}) {
 		};
 	}, [props.data.length]);
 
+	useEffect(() => {
+		return () => {
+			setData(props.data);
+		};
+	}, [props.data]);
+
 	const result = data.filter((c) => {
 		return c.parent
 			.join('')
