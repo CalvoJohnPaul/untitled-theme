@@ -34,24 +34,20 @@ export function Navbar() {
 }
 
 function DesktopMenu() {
-	const pathname = usePathname();
+	const links = useLinks();
 
 	return (
 		<div className="hidden items-center gap-5 lg:flex">
-			<Link
-				href="/icons"
-				className={linkCss}
-				aria-current={pathname.startsWith('/icons') ? 'page' : undefined}
-			>
-				Icons
-			</Link>
-			<Link
-				href="/colors"
-				className={linkCss}
-				aria-current={pathname.startsWith('/colors') ? 'page' : undefined}
-			>
-				Colors
-			</Link>
+			{links.map((link) => (
+				<Link
+					key={link.path}
+					href={link.path}
+					className={linkCss}
+					aria-current={link.active ? 'page' : undefined}
+				>
+					{link.label}
+				</Link>
+			))}
 			<a
 				href="https://github.com/CalvoJohnPaul/untitled-theme"
 				target="_blank"
@@ -70,7 +66,7 @@ function DesktopMenu() {
 }
 
 function MobileMenu() {
-	const pathname = usePathname();
+	const links = useLinks();
 
 	return (
 		<Menu.Root lazyMount>
@@ -81,28 +77,18 @@ function MobileMenu() {
 				<Menu.Positioner>
 					<Menu.Content className="z-dropdown w-48 ui-closed:animate-popover-out-bottom ui-open:animate-popover-in-bottom rounded-lg border bg-white dark:bg-olive-900">
 						<Menu.ItemGroup className="space-y-1 px-4 py-3">
-							<Menu.Item value="icons" asChild>
-								<Link
-									href="/icons"
-									className={linkCss}
-									aria-current={
-										pathname.startsWith('/icons') ? 'page' : undefined
-									}
-								>
-									Icons
-								</Link>
-							</Menu.Item>
-							<Menu.Item value="colors" asChild>
-								<Link
-									href="/colors"
-									className={linkCss}
-									aria-current={
-										pathname.startsWith('/colors') ? 'page' : undefined
-									}
-								>
-									Colors
-								</Link>
-							</Menu.Item>
+							{links.map((link) => (
+								<Menu.Item key={link.path} value={link.path} asChild>
+									<Link
+										href={link.path}
+										className={linkCss}
+										aria-current={link.active ? 'page' : undefined}
+									>
+										{link.label}
+									</Link>
+								</Menu.Item>
+							))}
+
 							<Menu.Item value="github" asChild>
 								<a
 									href="https://github.com/CalvoJohnPaul/untitled-theme"
@@ -125,4 +111,33 @@ function MobileMenu() {
 			</Portal>
 		</Menu.Root>
 	);
+}
+
+function useLinks() {
+	const path = usePathname();
+	const links: {
+		path: string;
+		label: string;
+		active: boolean;
+		hidden?: boolean;
+	}[] = [
+		{
+			path: '/icons',
+			label: 'Icons',
+			active: path.startsWith('/icons'),
+		},
+		{
+			path: '/colors',
+			label: 'Colors',
+			active: path.startsWith('/colors'),
+		},
+		{
+			path: '/examples',
+			label: 'Examples',
+			active: path.startsWith('/examples'),
+			hidden: process.env.NODE_ENV === 'production',
+		},
+	];
+
+	return links.filter((link) => !link.hidden);
 }
