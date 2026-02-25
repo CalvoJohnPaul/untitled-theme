@@ -37,31 +37,30 @@ function DesktopMenu() {
 	const pathname = usePathname();
 
 	return (
-		<div className="hidden items-center gap-3 lg:flex">
-			<div className="flex gap-4">
-				<Link
-					href="/icons"
-					className={linkCss}
-					aria-current={pathname.startsWith('/icons') ? 'page' : undefined}
-				>
-					Icons
-				</Link>
-				<Link
-					href="/colors"
-					className={linkCss}
-					aria-current={pathname.startsWith('/colors') ? 'page' : undefined}
-				>
-					Colors
-				</Link>
-				<a
-					href="https://github.com/CalvoJohnPaul/untitled-theme"
-					target="_blank"
-					rel="noreferrer noopener"
-					className={linkCss}
-				>
-					Github
-				</a>
-			</div>
+		<div className="hidden items-center gap-5 lg:flex">
+			<Link
+				href="/icons"
+				className={linkCss}
+				aria-current={pathname.startsWith('/icons') ? 'page' : undefined}
+			>
+				Icons
+			</Link>
+			<Link
+				href="/colors"
+				className={linkCss}
+				aria-current={pathname.startsWith('/colors') ? 'page' : undefined}
+			>
+				Colors
+			</Link>
+			<a
+				href="https://github.com/CalvoJohnPaul/untitled-theme"
+				target="_blank"
+				rel="noreferrer noopener"
+				className={linkCss}
+			>
+				Github
+			</a>
+
 			<ClientOnly>
 				<div className="mx-2 h-4 border-l" />
 				<ThemeToggle />
