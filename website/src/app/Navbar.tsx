@@ -90,15 +90,6 @@ function MobileMenu() {
 									</Link>
 								</Menu.Item>
 							))}
-
-							<Menu.Item value="github" asChild>
-								<a
-									href="https://github.com/CalvoJohnPaul/untitled-theme"
-									className={linkCss}
-								>
-									Github
-								</a>
-							</Menu.Item>
 						</Menu.ItemGroup>
 						<ClientOnly>
 							<Menu.Separator className="w-full border-t" />
