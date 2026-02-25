@@ -93,7 +93,7 @@ function Item() {
 				/>
 			</Dialog.Trigger>
 			<Portal>
-				<Dialog.Backdrop className="fixed inset-0 z-overlay ui-closed:animate-fade-out ui-open:animate-fade-in bg-olive-900/50 backdrop-blur-sm dark:bg-olive-900/50" />
+				<Dialog.Backdrop className="fixed inset-0 z-overlay ui-closed:animate-fade-out ui-open:animate-fade-in bg-olive-800/25 backdrop-blur-xs dark:bg-olive-800/10" />
 				<Dialog.Positioner>
 					<Dialog.Content className="fixed right-0 bottom-0 z-modal w-full ui-closed:animate-slide-down ui-open:animate-slide-up border-t bg-white p-4 md:p-6 lg:p-8 dark:bg-olive-900">
 						<Dialog.CloseTrigger className="absolute top-3 right-3 cursor-pointer p-1">
@@ -107,7 +107,7 @@ function Item() {
 									dangerouslySetInnerHTML={{__html: icon.html}}
 								/>
 
-								<div className="mt-5 flex max-h-dvh w-fit items-center gap-5 overflow-y-auto rounded bg-olive-100 px-3 py-2 dark:bg-olive-800/25">
+								<div className="mt-5 flex max-h-dvh w-fit items-center gap-5 overflow-y-auto rounded bg-olive-100 px-3 py-2 dark:bg-olive-700/15">
 									<code className="font-mono">&lt;{icon.name}&nbsp;/&gt;</code>
 									<Clipboard.Root className="flex" value={`<${icon.name} />`}>
 										<Clipboard.Trigger className="p-1">
@@ -128,7 +128,7 @@ function Item() {
 											<Tabs.Trigger
 												key={tab.value}
 												value={tab.value}
-												className="ui-selected:text-indigo-600 dark:ui-selected:text-indigo-400"
+												className="ui-selected:text-orange-600 dark:ui-selected:text-orange-400"
 											>
 												{tab.label}
 											</Tabs.Trigger>

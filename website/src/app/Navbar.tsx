@@ -44,18 +44,15 @@ function DesktopMenu() {
 					href={link.path}
 					className={linkCss}
 					aria-current={link.active ? 'page' : undefined}
+					{...(link.external && {
+						prefetch: false,
+						target: '_blank',
+						rel: 'noreferrer noopener',
+					})}
 				>
 					{link.label}
 				</Link>
 			))}
-			<a
-				href="https://github.com/CalvoJohnPaul/untitled-theme"
-				target="_blank"
-				rel="noreferrer noopener"
-				className={linkCss}
-			>
-				Github
-			</a>
 
 			<ClientOnly>
 				<div className="mx-2 h-4 border-l" />
@@ -83,6 +80,11 @@ function MobileMenu() {
 										href={link.path}
 										className={linkCss}
 										aria-current={link.active ? 'page' : undefined}
+										{...(link.external && {
+											prefetch: false,
+											target: '_blank',
+											rel: 'noreferrer noopener',
+										})}
 									>
 										{link.label}
 									</Link>
@@ -92,8 +94,6 @@ function MobileMenu() {
 							<Menu.Item value="github" asChild>
 								<a
 									href="https://github.com/CalvoJohnPaul/untitled-theme"
-									target="_blank"
-									rel="noreferrer noopener"
 									className={linkCss}
 								>
 									Github
@@ -118,8 +118,9 @@ function useLinks() {
 	const links: {
 		path: string;
 		label: string;
-		active: boolean;
+		active?: boolean;
 		hidden?: boolean;
+		external?: boolean;
 	}[] = [
 		{
 			path: '/icons',
@@ -136,6 +137,11 @@ function useLinks() {
 			label: 'Examples',
 			active: path.startsWith('/examples'),
 			hidden: process.env.NODE_ENV === 'production',
+		},
+		{
+			path: 'https://github.com/CalvoJohnPaul/untitled-theme',
+			label: 'Github',
+			external: true,
 		},
 	];
 
