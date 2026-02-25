@@ -120,14 +120,14 @@ export default async function Page() {
 						</p>
 
 						<div className="mt-4 space-y-2 font-mono text-sm">
-							<div className="rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
+							<div className="overflow-x-auto whitespace-nowrap rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
 								npm install{' '}
 								<span className="font-medium text-orange-600 dark:text-orange-400">
 									@untitled-theme/icons-react
 								</span>{' '}
 								<span className="opacity-25">{'// svelte or solid'}</span>
 							</div>
-							<div className="rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
+							<div className="overflow-x-auto whitespace-nowrap rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
 								npm install{' '}
 								<span className="font-medium text-orange-600 dark:text-orange-400">
 									@untitled-theme/colors

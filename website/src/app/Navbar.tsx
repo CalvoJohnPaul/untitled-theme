@@ -26,7 +26,9 @@ export function Navbar() {
 			</Link>
 			<div className="grow"></div>
 			<DesktopMenu />
-			<MobileMenu />
+			<ClientOnly>
+				<MobileMenu />
+			</ClientOnly>
 		</header>
 	);
 }
@@ -72,40 +74,46 @@ function MobileMenu() {
 	const pathname = usePathname();
 
 	return (
-		<Menu.Root>
+		<Menu.Root lazyMount>
 			<Menu.Trigger className="flex size-9 items-center justify-center rounded border lg:hidden">
 				<Menu04Icon />
 			</Menu.Trigger>
 			<Portal>
 				<Menu.Positioner>
-					<Menu.Content className="w-48 ui-closed:animate-popover-out-bottom ui-open:animate-popover-in-bottom rounded-lg border bg-white dark:bg-olive-900">
+					<Menu.Content className="z-dropdown w-48 ui-closed:animate-popover-out-bottom ui-open:animate-popover-in-bottom rounded-lg border bg-white dark:bg-olive-900">
 						<Menu.ItemGroup className="space-y-1 px-4 py-3">
-							<Link
-								href="/icons"
-								className={linkCss}
-								aria-current={
-									pathname.startsWith('/icons') ? 'page' : undefined
-								}
-							>
-								Icons
-							</Link>
-							<Link
-								href="/colors"
-								className={linkCss}
-								aria-current={
-									pathname.startsWith('/colors') ? 'page' : undefined
-								}
-							>
-								Colors
-							</Link>
-							<a
-								href="https://github.com/CalvoJohnPaul/untitled-theme"
-								target="_blank"
-								rel="noreferrer noopener"
-								className={linkCss}
-							>
-								Github
-							</a>
+							<Menu.Item value="icons" asChild>
+								<Link
+									href="/icons"
+									className={linkCss}
+									aria-current={
+										pathname.startsWith('/icons') ? 'page' : undefined
+									}
+								>
+									Icons
+								</Link>
+							</Menu.Item>
+							<Menu.Item value="colors" asChild>
+								<Link
+									href="/colors"
+									className={linkCss}
+									aria-current={
+										pathname.startsWith('/colors') ? 'page' : undefined
+									}
+								>
+									Colors
+								</Link>
+							</Menu.Item>
+							<Menu.Item value="github" asChild>
+								<a
+									href="https://github.com/CalvoJohnPaul/untitled-theme"
+									target="_blank"
+									rel="noreferrer noopener"
+									className={linkCss}
+								>
+									Github
+								</a>
+							</Menu.Item>
 						</Menu.ItemGroup>
 						<ClientOnly>
 							<Menu.Separator className="w-full border-t" />
