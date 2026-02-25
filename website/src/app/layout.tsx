@@ -1,13 +1,12 @@
 import {Analytics} from '@vercel/analytics/next';
 import clsx from 'clsx';
 import type {Metadata} from 'next';
-import {Fira_Code, Inter, Rammetto_One} from 'next/font/google';
+import {ThemeProvider} from 'next-themes';
+import {Geist, Geist_Mono, Rammetto_One} from 'next/font/google';
 import './globals.css';
 import {Navbar} from './Navbar';
-import {Providers} from './Providers';
-import {Searchbar} from './Searchbar';
 
-const body = Inter({
+const body = Geist({
 	weight: ['400', '500', '600', '700'],
 	style: 'normal',
 	display: 'swap',
@@ -27,8 +26,8 @@ const heading = Rammetto_One({
 	adjustFontFallback: true,
 });
 
-const mono = Fira_Code({
-	weight: '400',
+const mono = Geist_Mono({
+	weight: ['400', '500', '600', '700'],
 	style: 'normal',
 	display: 'swap',
 	subsets: ['latin'],
@@ -59,14 +58,17 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			)}
 			suppressHydrationWarning
 		>
-			<body className="min-h-dvh bg-white font-sans text-neutral-700 dark:bg-neutral-900 dark:text-neutral-400">
-				<Providers>
+			<body className="min-h-dvh font-sans text-olive-700 dark:text-olive-400">
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+					enableSystem={false}
+					enableColorScheme={false}
+					disableTransitionOnChange={false}
+				>
 					<Navbar />
-					<main className="mx-auto max-w-5xl p-4 md:p-8 lg:p-12">
-						<Searchbar />
-						{children}
-					</main>
-				</Providers>
+					{children}
+				</ThemeProvider>
 				<Analytics />
 			</body>
 		</html>

@@ -222,13 +222,14 @@ async function toSvelteSnippet(svg: string) {
 		${svelteSvg}
 	`;
 
+	/* FIXME */
 	const {content} = biome.formatContent(projectKey, component, {
 		filePath: 'Component.svelte',
 	});
 
 	return {
 		raw: component,
-		html: await codeToHtml(content, {
+		html: await codeToHtml(component, {
 			...SHIKI_CONFIG,
 			lang: 'svelte',
 		}),

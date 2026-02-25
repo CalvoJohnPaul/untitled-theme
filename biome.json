@@ -8,6 +8,14 @@
 	"files": {
 		"ignoreUnknown": false
 	},
+	"assist": {
+		"enabled": true,
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
+		}
+	},
 	"formatter": {
 		"enabled": true,
 		"indentStyle": "tab"
@@ -22,7 +30,7 @@
 					"level": "on",
 					"options": {
 						"attributes": ["class", "className"],
-						"functions": ["twMerge", "twJoin"]
+						"functions": ["clsx"]
 					}
 				}
 			},
@@ -40,14 +48,9 @@
 			"correctness": {
 				"noUnusedVariables": "warn",
 				"noUnusedFunctionParameters": "warn"
-			}
-		}
-	},
-	"assist": {
-		"enabled": true,
-		"actions": {
-			"source": {
-				"organizeImports": "off"
+			},
+			"complexity": {
+				"noImportantStyles": "off"
 			}
 		}
 	},
@@ -58,9 +61,35 @@
 			"trailingCommas": "all"
 		}
 	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		},
+		"experimentalFullSupportEnabled": true
+	},
 	"css": {
 		"parser": {
 			"tailwindDirectives": true
 		}
-	}
+	},
+	"overrides": [
+		{
+			"includes": ["**/*.svelte", "**/*.svelte.ts"],
+			"linter": {
+				"rules": {
+					"style": {
+						"useConst": "off",
+						"useImportType": "off"
+					},
+					"correctness": {
+						"noUnusedVariables": "off",
+						"noUnusedImports": "off"
+					},
+					"complexity": {
+						"noCommaOperator": "off"
+					}
+				}
+			}
+		}
+	]
 }

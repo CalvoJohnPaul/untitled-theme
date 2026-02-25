@@ -19,4 +19,10 @@ export async function getIcons(options?: PaginatedOptions) {
 	return array.slice(offset, offset + limit);
 }
 
+export async function getIconsCount() {
+	'use cache';
+	const array = _getIcons();
+	return array.length;
+}
+
 const _getIcons = () => icons as unknown as Icon[];

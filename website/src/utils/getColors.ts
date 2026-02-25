@@ -19,6 +19,12 @@ export async function getColors(options?: PaginatedOptions) {
 	return array.slice(offset, offset + limit);
 }
 
+export async function getColorsCount() {
+	'use cache';
+	const array = _getColors();
+	return array.length;
+}
+
 function _getColors() {
 	const l: ColorPalette[] = [];
 

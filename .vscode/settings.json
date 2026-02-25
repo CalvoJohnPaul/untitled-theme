@@ -7,6 +7,10 @@
 	"files.associations": {
 		"*.css": "tailwindcss"
 	},
+	"tailwindCSS.experimental.classRegex": [["clsx\\(([^)]*)\\)", "'([^']*)'"]],
+	"tailwindCSS.experimental.configFile": {
+		"website/src/app/globals.css": "website/src/**"
+	},
 	"prettier.enable": false,
 	"typescript.tsdk": "node_modules\\typescript\\lib"
 }
