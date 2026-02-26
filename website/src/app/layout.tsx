@@ -58,7 +58,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			)}
 			suppressHydrationWarning
 		>
-			<body className="min-h-dvh font-sans text-olive-700 dark:text-olive-400">
+			<body className="min-h-dvh font-sans text-olive-700 dark:text-olive-300">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"

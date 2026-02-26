@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function Page() {
 	const data = await getIcons({
-		limit: process.env.NODE_ENV === 'development' ? 1 : 250,
+		limit: process.env.NODE_ENV === 'development' ? 8 : 250,
 	});
 
 	return (

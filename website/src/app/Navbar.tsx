@@ -26,40 +26,34 @@ export function Navbar() {
 			</Link>
 			<div className="grow"></div>
 			<DesktopMenu />
-			<MobileMenu />
+			<ClientOnly>
+				<MobileMenu />
+			</ClientOnly>
 		</header>
 	);
 }
 
 function DesktopMenu() {
-	const pathname = usePathname();
+	const links = useLinks();
 
 	return (
-		<div className="hidden items-center gap-3 lg:flex">
-			<div className="flex gap-4">
+		<div className="hidden items-center gap-5 lg:flex">
+			{links.map((link) => (
 				<Link
-					href="/icons"
+					key={link.path}
+					href={link.path}
 					className={linkCss}
-					aria-current={pathname.startsWith('/icons') ? 'page' : undefined}
+					aria-current={link.active ? 'page' : undefined}
+					{...(link.external && {
+						prefetch: false,
+						target: '_blank',
+						rel: 'noreferrer noopener',
+					})}
 				>
-					Icons
+					{link.label}
 				</Link>
-				<Link
-					href="/colors"
-					className={linkCss}
-					aria-current={pathname.startsWith('/colors') ? 'page' : undefined}
-				>
-					Colors
-				</Link>
-				<a
-					href="https://github.com/CalvoJohnPaul/untitled-theme"
-					target="_blank"
-					rel="noreferrer noopener"
-					className={linkCss}
-				>
-					Github
-				</a>
-			</div>
+			))}
+
 			<ClientOnly>
 				<div className="mx-2 h-4 border-l" />
 				<ThemeToggle />
@@ -69,43 +63,33 @@ function DesktopMenu() {
 }
 
 function MobileMenu() {
-	const pathname = usePathname();
+	const links = useLinks();
 
 	return (
-		<Menu.Root>
+		<Menu.Root lazyMount>
 			<Menu.Trigger className="flex size-9 items-center justify-center rounded border lg:hidden">
 				<Menu04Icon />
 			</Menu.Trigger>
 			<Portal>
 				<Menu.Positioner>
-					<Menu.Content className="w-48 ui-closed:animate-popover-out-bottom ui-open:animate-popover-in-bottom rounded-lg border bg-white dark:bg-olive-900">
+					<Menu.Content className="z-dropdown w-48 ui-closed:animate-popover-out-bottom ui-open:animate-popover-in-bottom rounded-lg border bg-white dark:bg-olive-900">
 						<Menu.ItemGroup className="space-y-1 px-4 py-3">
-							<Link
-								href="/icons"
-								className={linkCss}
-								aria-current={
-									pathname.startsWith('/icons') ? 'page' : undefined
-								}
-							>
-								Icons
-							</Link>
-							<Link
-								href="/colors"
-								className={linkCss}
-								aria-current={
-									pathname.startsWith('/colors') ? 'page' : undefined
-								}
-							>
-								Colors
-							</Link>
-							<a
-								href="https://github.com/CalvoJohnPaul/untitled-theme"
-								target="_blank"
-								rel="noreferrer noopener"
-								className={linkCss}
-							>
-								Github
-							</a>
+							{links.map((link) => (
+								<Menu.Item key={link.path} value={link.path} asChild>
+									<Link
+										href={link.path}
+										className={linkCss}
+										aria-current={link.active ? 'page' : undefined}
+										{...(link.external && {
+											prefetch: false,
+											target: '_blank',
+											rel: 'noreferrer noopener',
+										})}
+									>
+										{link.label}
+									</Link>
+								</Menu.Item>
+							))}
 						</Menu.ItemGroup>
 						<ClientOnly>
 							<Menu.Separator className="w-full border-t" />
@@ -118,4 +102,39 @@ function MobileMenu() {
 			</Portal>
 		</Menu.Root>
 	);
+}
+
+function useLinks() {
+	const path = usePathname();
+	const links: {
+		path: string;
+		label: string;
+		active?: boolean;
+		hidden?: boolean;
+		external?: boolean;
+	}[] = [
+		{
+			path: '/icons',
+			label: 'Icons',
+			active: path.startsWith('/icons'),
+		},
+		{
+			path: '/colors',
+			label: 'Colors',
+			active: path.startsWith('/colors'),
+		},
+		{
+			path: '/examples',
+			label: 'Examples',
+			active: path.startsWith('/examples'),
+			hidden: process.env.NODE_ENV === 'production',
+		},
+		{
+			path: 'https://github.com/CalvoJohnPaul/untitled-theme',
+			label: 'Github',
+			external: true,
+		},
+	];
+
+	return links.filter((link) => !link.hidden);
 }

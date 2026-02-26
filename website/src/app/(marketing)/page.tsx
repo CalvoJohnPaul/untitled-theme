@@ -27,18 +27,18 @@ export default async function Page() {
 					<p className="font-mono text-olive-500 text-xs uppercase tracking-widest dark:text-olive-400">
 						Untitled Theme
 					</p>
-					<h1 className="mt-3 max-w-2xl font-heading text-2xl text-olive-900 md:text-3xl dark:text-olive-100">
-						Design tokens and icon packs in one place.
+					<h1 className="mt-3 max-w-xl font-heading text-2xl text-olive-900 md:text-3xl dark:text-olive-100">
+						Untitled UI colors and icons in one place.
 					</h1>
 					<p className="mt-4 max-w-2xl text-olive-600 dark:text-olive-400">
 						Browse the full icon library and explore color palettes used across
-						the ecosystem.
+						Untitled UI.
 					</p>
 
 					<div className="mt-6 flex flex-wrap gap-3">
 						<Link
 							href="/icons"
-							className="rounded-md border bg-olive-100 px-4 py-2 font-medium text-olive-900 text-sm hover:bg-olive-200 dark:bg-olive-800/40 dark:text-olive-100 dark:hover:bg-olive-800"
+							className="rounded-md bg-olive-900 px-4 py-2 font-medium text-olive-100 text-sm dark:bg-white dark:text-olive-900"
 						>
 							Browse Icons
 						</Link>
@@ -86,7 +86,7 @@ export default async function Page() {
 							{colorsCount.toLocaleString()}
 						</p>
 						<p className="mt-1 text-sm">
-							Organized token groups ready to copy and reuse.
+							Organized color groups ready to copy and reuse.
 						</p>
 						<div className="mt-4 grid grid-cols-6 gap-1 lg:grid-cols-8">
 							{colors
@@ -116,18 +116,19 @@ export default async function Page() {
 							Quick Install
 						</p>
 						<p className="mt-2 text-sm">
-							Start with the packages you need, then browse full docs for each.
+							Get started by installing the packages via your favorite package
+							manager.
 						</p>
 
 						<div className="mt-4 space-y-2 font-mono text-sm">
-							<div className="rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
+							<div className="overflow-x-auto whitespace-nowrap rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
 								npm install{' '}
 								<span className="font-medium text-orange-600 dark:text-orange-400">
 									@untitled-theme/icons-react
 								</span>{' '}
 								<span className="opacity-25">{'// svelte or solid'}</span>
 							</div>
-							<div className="rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
+							<div className="overflow-x-auto whitespace-nowrap rounded border bg-olive-50 px-3 py-2 dark:bg-olive-800/25">
 								npm install{' '}
 								<span className="font-medium text-orange-600 dark:text-orange-400">
 									@untitled-theme/colors

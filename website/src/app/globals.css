@@ -2,8 +2,8 @@
 @plugin "tailwind-zag";
 
 @layer base {
-	body {
-		background-image:
+	:root {
+		--g:
 			radial-gradient(
 				50% 40% at 16% 18%,
 				rgba(0, 255, 170, 0.14),
@@ -24,12 +24,10 @@
 				rgba(255, 255, 255, 0.035),
 				transparent 72%
 			);
-		background-repeat: no-repeat;
-		background-attachment: fixed;
 	}
 
-	.dark body {
-		background-image:
+	:root.dark {
+		--g:
 			radial-gradient(
 				55% 45% at 18% 16%,
 				rgba(16, 185, 129, 0.06),
@@ -50,6 +48,12 @@
 				rgba(255, 255, 255, 0.01),
 				transparent 82%
 			);
+	}
+
+	body {
+		background-image: var(--g);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
 
 	button,
@@ -84,11 +88,6 @@
 	--spacing-4\.5: 1.125rem;
 	--spacing-5\.5: 1.375rem;
 
-	--z-10: 10;
-	--z-20: 20;
-	--z-30: 30;
-	--z-40: 40;
-	--z-50: 50;
 	--z-auto: auto;
 	--z-base: 0;
 	--z-docked: 10;
