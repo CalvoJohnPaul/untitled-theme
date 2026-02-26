@@ -80,4 +80,4 @@ Using vanilla CSS
 import '@untitled-theme/colors/index.css';
 ```
 
-See all colors [here](https://untitled-theme-docs.vercel.app/colors)
+See all colors [here](https://untitledui-icons.vercel.app)

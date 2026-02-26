@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
 			userAgent: '*',
 			allow: '/',
 		},
-		sitemap: 'https://untitled-theme-docs.vercel.app/sitemap.xml',
+		sitemap: 'https://untitledui-icons.vercel.app/sitemap.xml',
 	};
 }
