@@ -5,10 +5,20 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
 	title: 'Untitled Theme',
+	description: 'Open-source icons and color tokens for modern interfaces.',
+	alternates: {
+		canonical: '/',
+	},
 	openGraph: {
 		title: 'Untitled Theme',
 		description: 'Open-source icons and color tokens for modern interfaces.',
 		images: '/icons-opengraph-banner.png',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Untitled Theme',
+		description: 'Open-source icons and color tokens for modern interfaces.',
+		images: ['/icons-opengraph-banner.png'],
 	},
 };
 

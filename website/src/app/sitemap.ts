@@ -5,22 +5,28 @@ export const dynamic = 'force-static';
 export default function sitemap(): MetadataRoute.Sitemap {
 	return [
 		{
-			url: 'https://untitledui-icons.vercel.app',
+			url: 'https://untitled-theme.xyz',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 1,
 		},
 		{
-			url: 'https://untitledui-icons.vercel.app/icons',
+			url: 'https://untitled-theme.xyz/icons',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 0.8,
 		},
 		{
-			url: 'https://untitledui-icons.vercel.app/colors',
+			url: 'https://untitled-theme.xyz/colors',
 			lastModified: new Date(),
 			changeFrequency: 'monthly',
 			priority: 0.8,
+		},
+		{
+			url: 'https://untitled-theme.xyz/examples',
+			lastModified: new Date(),
+			changeFrequency: 'monthly',
+			priority: 0.7,
 		},
 	];
 }

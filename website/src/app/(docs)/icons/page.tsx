@@ -5,10 +5,20 @@ import {Items} from './Items';
 
 export const metadata: Metadata = {
 	title: 'Icons',
+	description: "Browse all of Untitled UI's icons.",
+	alternates: {
+		canonical: '/icons',
+	},
 	openGraph: {
 		title: 'Untitled Theme Icons',
 		description: "Browse all of Untitled UI's icons",
 		images: '/icons-opengraph-banner.png',
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Untitled Theme Icons',
+		description: "Browse all of Untitled UI's icons.",
+		images: ['/icons-opengraph-banner.png'],
 	},
 };
 

@@ -41,4 +41,4 @@ module.exports = {
 };
 ```
 
-See all icons [here](https://untitledui-icons.vercel.app)
+See all icons [here](https://untitled-theme.xyz)
