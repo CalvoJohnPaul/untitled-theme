@@ -42,6 +42,9 @@ export const metadata: Metadata = {
 		template: '%s | Untitled Theme',
 	},
 	metadataBase: new URL('https://untitledui-icons.vercel.app'),
+	verification: {
+		google: 'YBU87GjlKIWAHyFNy6ZXE802gBNhU2acCfQ-8s1tlQ0',
+	},
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
