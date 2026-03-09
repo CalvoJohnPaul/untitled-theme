@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 	applicationName: siteName,
 	metadataBase: new URL(siteUrl),
 	alternates: {
-		canonical: '/',
+		canonical: './',
 	},
 	openGraph: {
 		title: siteName,
