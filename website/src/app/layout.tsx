@@ -3,9 +3,10 @@ import clsx from 'clsx';
 import type {Metadata} from 'next';
 import {ThemeProvider} from 'next-themes';
 import {Geist, Geist_Mono, Rammetto_One} from 'next/font/google';
-import type {WebSite, WithContext} from 'schema-dts';
+import type {WebSite} from 'schema-dts';
 import './globals.css';
 import {Navbar} from './Navbar';
+import {JsonLd} from 'react-schemaorg';
 
 const body = Geist({
 	weight: ['400', '500', '600', '700'],
@@ -88,14 +89,6 @@ export const metadata: Metadata = {
 	},
 };
 
-const jsonLd: WithContext<WebSite> = {
-	'@context': 'https://schema.org',
-	'@type': 'WebSite',
-	name: siteName,
-	description: siteDescription,
-	url: siteUrl,
-};
-
 export default function RootLayout({children}: {children: React.ReactNode}) {
 	return (
 		<html
@@ -111,10 +104,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 			suppressHydrationWarning
 		>
 			<body className="min-h-dvh font-sans text-olive-700 dark:text-olive-300">
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+				<JsonLd<WebSite>
+					item={{
+						'@context': 'https://schema.org',
+						'@type': 'WebSite',
+						name: siteName,
+						description: siteDescription,
+						url: siteUrl,
 					}}
 				/>
 				<ThemeProvider
